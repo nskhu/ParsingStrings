@@ -12,7 +12,7 @@ namespace ParsingStrings
         /// <returns>true if <see cref="str"/> was converted successfully; otherwise, false.</returns>
         public static bool TryParseBoolean(string str, out bool result)
         {
-            throw new NotImplementedException();
+            return bool.TryParse(str, out result);
         }
 
         /// <summary>
@@ -22,7 +22,12 @@ namespace ParsingStrings
         /// <returns>true if value is equivalent to <see cref="bool.TrueString"/>; false if value is equivalent to <see cref="bool.FalseString"/>.</returns>
         public static bool ParseBoolean(string str)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return bool.Parse(str);
+            }
+            catch (FormatException)
+            { return false; }
         }
     }
 }
